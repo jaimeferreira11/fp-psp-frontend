@@ -32,6 +32,8 @@ class DateFormat extends React.Component {
           <DatePicker
             selected={this.state.startDate}
             className="form-control datepicker"
+            maxDate={moment()}
+            minDate={moment().subtract(100, "years")}
             onChange={this.handleChange}
             showYearDropdown
             showMonthDropdown
