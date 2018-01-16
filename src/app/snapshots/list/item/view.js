@@ -8,7 +8,9 @@ import Template from './template.hbs';
 import PriorityView from './priority/view';
 import FlashesService from '../../../flashes/service';
 import PriorityModel from './priority/model';
+import SnapshotModel from '../../add/model';
 import ModalService from '../../../modal/service';
+import Storage from './storage';
 
 export default Mn.View.extend({
   template: Template,
@@ -22,11 +24,17 @@ export default Mn.View.extend({
   initialize(options) {
     this.props = Object.assign({}, options);
     this.model = this.props.model;
+    this.app = this.props.app;
     this.model.on('sync', this.render);
+
   },
 
   serializeData() {
     var self = this;
+    
+    const headerItems = Storage.getSubHeaderItems(this.model);
+    this.app.updateSubHeader(headerItems);
+
     this.props.model.attributes.indicators_priorities.forEach(value => {
       var date = self.formartterOnlyDate(value.estimated_date);
       value.estimated_date = date;
@@ -38,7 +46,7 @@ export default Mn.View.extend({
         data: this.model.attributes // ,
       },
       data: this.model.attributes.indicators_survey_data.map(value => ({
-        clazz: value.value.toLowerCase(),
+        clazz: value.value !== null ? value.value.toLowerCase() : 'gray',
         value: value.value,
         name: value.name
       })),
@@ -116,7 +124,7 @@ export default Mn.View.extend({
         type: 'info',
         title: `The "${indicatorSelected}" indicator was previously selected`
       });
-      
+
     }
 
     if (indicatorSelectedValue.toUpperCase() === 'GREEN') {
@@ -125,7 +133,14 @@ export default Mn.View.extend({
         type: 'info',
         title: `The "${indicatorSelected}" indicator is really good`
       });
-      
+
+    }else if (indicatorSelectedValue.toUpperCase() === 'NONE') {
+        return FlashesService.request('add', {
+          timeout: 2000,
+          type: 'info',
+          title: `You have chosen not to answer the question`
+        });
+
     }
     this.showDialogPriority(indicatorSelected);
     this.priorityDialog.open();
@@ -153,10 +168,51 @@ export default Mn.View.extend({
 
   handleShowFamilyMap(e) {
     e.preventDefault();
+
+    if(this.model.attributes.indicators_priorities.length<1){
+      
+      ModalService.request('confirm', {
+        title: 'Information',
+        text: `You have not set any priorities yet, are sure you want to finish the survey?`
+      }).then(confirmed => {
+        if (!confirmed) {
+          return;
+        }
+        this.finishSurvey();
+      });
+
+    } else {
+      this.finishSurvey();
+    }
+  },
+
+  finishSurvey(){
+    if($('#check-privacity').is(':checked')) {
+      ModalService.request('confirm', {
+        title: 'Information',
+        text: `Your personal information has not been saved in the platform`
+      }).then(confirmed => {
+        if (!confirmed) {
+          return;
+        }
+        // delete snapshot
+       const model = new SnapshotModel();
+        model.set("id", `${this.props.model.attributes.snapshot_economic_id}`);
+        model.destroy();
+        this.redirect(`surveys`);
+
+
+      });
+    } else {
+      this.redirect(`families/${this.props.model.attributes.family_id}/snapshots/${
+           this.props.model.attributes.snapshot_economic_id
+         }`)
+    }
+  },
+
+  redirect(url){
     Bn.history.navigate(
-      `families/${this.props.model.attributes.family_id}/snapshots/${
-        this.props.model.attributes.snapshot_economic_id
-      }`,
+      url,
       true
     );
   },

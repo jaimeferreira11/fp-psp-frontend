@@ -3,6 +3,7 @@ import JsonSchemaForm from 'react-jsonschema-form';
 import Gallery from './gallery';
 import Gmap from './gmap';
 import DateFormat from './dateFormat';
+import NumberFormat from './number';
 
 const log = type => console.log.bind(console, type);
 
@@ -129,6 +130,7 @@ class Form extends Component {
     var newData = JSON.parse(JSON.stringify(this.state.formData));
     this.state.stepsSchema[this.state.step];
 
+
     if (this.state.step > 0) {
       this.setState({
         step: this.state.step - 1,
@@ -140,25 +142,22 @@ class Form extends Component {
       });
       this.props.handleCancel();
     }
+
   }
 
   render() {
     return (
-      <div>
-        <div>
-          <h4 className="progress-survey">
-            {' '}
-            {this.state.stepsSchema[this.state.step].description}
-            {this.counter[this.state.stepsSchema[this.state.step].counter]}
-          </h4>
-        </div>
-        <hr />
-        <br />
-        <br />
+      <div className="survey-container">
+        <label className="progress-survey">
+          {' '}
+          {this.state.stepsSchema[this.state.step].description}
+          {this.counter[this.state.stepsSchema[this.state.step].counter]}
+        </label>
+        <hr className="progress-rule" />
         <JsonSchemaForm
           schema={this.state.stepsSchema[this.state.step]}
           uiSchema={this.state.stepsUISchema[this.state.step]}
-          fields={{ gallery: Gallery, gmap: Gmap, dateFormat: DateFormat }}
+          fields={{ gallery: Gallery, gmap: Gmap, numberFormat: NumberFormat, dateFormat: DateFormat }}
           onSubmit={this.onSubmit}
           onError={log('errors')}
           formData={this.state.formData}

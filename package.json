@@ -62,6 +62,7 @@
     "prettier-eslint": "^8.2.0",
     "run-sequence": "^1.2.2",
     "style-loader": "^0.13.0",
+    "scottyjs": "^1.10.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
@@ -111,6 +112,8 @@
     "fix": "npm run fix:script && npm run fix:config && npm run fix:style && npm run fix:docs",
     "precommit": "lint-staged",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.js\"",
-    "test": "karma start && npm run lint"
+    "test": "karma start && npm run lint",
+    "deploy": "scotty --spa --source ./dist --region us-east-1 --bucket aws-website-povertystoplight-w6fez --force --nocdn",
+    "deploy:UK": "scotty --spa --source ./dist --region eu-west-2 --bucket aws-website-povertystoplight-london --force --nocdn"
   }
 }
