@@ -986,7 +986,17 @@ div.fp-form-container {
   top: 48%;
   left: 6%;
 }
-
+.datepicker {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 32px !important;
+  color: #788c9a !important;
+  height: 75px;
+  background: #f6f6f6;
+  margin-left: 7%;
+  margin-right: 7%;
+  width: 86%;
+}
 .field-string,
 .field-integer {
   > input {
@@ -996,7 +1006,6 @@ div.fp-form-container {
     color: #788c9a !important;
     height: 75px;
     background: #f6f6f6;
-    height: 75px;
     margin-left: 7%;
     margin-right: 7%;
     width: 86%;
