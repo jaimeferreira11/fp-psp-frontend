@@ -12,7 +12,6 @@ export default Mn.View.extend({
   events: {
     'click #add-new': 'handleAddNew'
   },
-
   initialize(options) {
     const { add } = options;
     this.collection = new Collection();
@@ -28,6 +27,7 @@ export default Mn.View.extend({
     element.empty();
 
     this.collection.forEach(item => {
+      
       item.bind('remove', function() {
         this.destroy();
       });
@@ -42,15 +42,19 @@ export default Mn.View.extend({
       // to the list/table
       element.append(itemView.render().el);
     });
-
+    
     if (session.userHasRole('ROLE_SURVEY_USER')) {
       $('#add-new').hide();
+      $('.delete-survey-btn').hide();
+      $('.take-survey-btn').show();
     }else{
       $('#add-new').show();
+      $('.take-survey-btn').hide();
     }
   },
-  
-  handleAddNew() {
+
+  handleAddNew(e) {
+    e.preventDefault();
     this.props.add();
   },
 
@@ -63,16 +67,16 @@ export default Mn.View.extend({
       if (!confirmed) {
         return;
       }
-     
+
       model.destroy({
-         
+
         success: () => self.handleDestroySuccess(),
         error: (item, response) => {
           self.render();
           return self.handleDestroyError(response);
         },
         wait:true
-        });      
+        });
     });
   },
 

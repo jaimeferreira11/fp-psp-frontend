@@ -21,14 +21,14 @@ class Gallery extends React.Component {
       isGoing: '',
       images: props.schema.items.enum,
       title: props.schema.title,
-      required: props.required ? '*' : '', 
+      required: props.required ? '*' : '',
       loading: true
     };
   }
 
   renderImage(imageUrl, imageDescription, imageValue, index, className) {
     return (
-      <div className="col-md-4" key={index}>
+      <div className="col-md-4 col-sm-4" key={index}>
         <div
           onClick={this._handleClickOnImage(
             index,
@@ -48,13 +48,12 @@ class Gallery extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     if (this.props.name !== nextProps.name) {
       let ban = false;
-      if(nextProps.formData[0].value === "NONE"){
+      if (nextProps.formData[0].value === 'NONE') {
         ban = true;
       }
-      this.setState ( {
+      this.setState({
         selected: nextProps.formData[0].url,
         images: nextProps.schema.items.enum,
         title: nextProps.schema.title,
@@ -65,7 +64,7 @@ class Gallery extends React.Component {
     }
   }
 
-  imagesWillRender(){
+  imagesWillRender() {
     let images = [];
     for (let i = 0; i < this.state.images.length; i++) {
       let url = this.state.images[i].url;
@@ -80,20 +79,29 @@ class Gallery extends React.Component {
 
   render() {
     const { loading } = this.state;
-    
+
     let images = [];
-    if(loading) { 
+    if (loading) {
       setTimeout(() => this.setState({ loading: false }), 200);
-      for (let i = 0; i < this.state.images.length-1; i++) {
-        images.push(this.renderImage('../../static/images/image_default.png', 'Loading...', 'NONE', i, 'gallery-image gallery-image-div' ));
+
+      for (let i = 0; i < this.state.images.length - 1; i++) {
+        images.push(
+          this.renderImage(
+            '/static/images/image_default.png',
+            'Loading...',
+            'NONE',
+            i,
+            'gallery-image gallery-image-div'
+          )
+        );
       }
     } else {
       images = this.imagesWillRender();
     }
 
     return (
-      <div className="form-group field field-gallery">
-        <label className="control-label">
+      <div className="field field-gallery">
+        <label className="progress-survey">
           {this.state.title} {this.state.required}
         </label>
 
@@ -103,14 +111,10 @@ class Gallery extends React.Component {
             checked={this.state.isGoing}
             onChange={this.handleInputChange}
           />
-             &#32;&#32;I&#39;d prefer not to answer
+          &#32;&#32; I&#39;d prefer not to answer
         </div>
-        <br />
-        <br />
-        <div className="row">
-          <div className="images col-sm-8 col-md-offset-2">
-            <div className="row">{images}</div>
-          </div>
+        <div className="images col-md-10 col-md-offset-1">
+          <div className="row">{images}</div>
         </div>
       </div>
     );
@@ -120,19 +124,18 @@ class Gallery extends React.Component {
     let component = this;
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({isGoing: value});
+    this.setState({ isGoing: value });
 
-    if(value){
+    if (value) {
       component.setState({
         selected: '',
         isGoing: true
       });
       if (component.props.onChange) {
-          component.props.onChange([
-            { url: "NONE", description: "", value: "NONE" }
-          ]);
+        component.props.onChange([
+          { url: 'NONE', description: '', value: 'NONE' }
+        ]);
       }
-
     }
   }
 
@@ -140,7 +143,6 @@ class Gallery extends React.Component {
     var component = this;
 
     return function() {
-
       if (component.props.onChange) {
         component.props.onChange(index, imageUrl, imageDescription, imageValue);
       }
@@ -148,7 +150,6 @@ class Gallery extends React.Component {
         selected: imageUrl,
         isGoing: false
       });
-
 
       setImmediate(() =>
         component.props.onChange([
