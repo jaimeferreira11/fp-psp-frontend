@@ -3,6 +3,7 @@ import 'eonasdan-bootstrap-datetimepicker';
 import Bn from 'backbone';
 import $ from 'jquery';
 import moment from 'moment';
+import 'moment-timezone';
 
 import Template from './template.hbs';
 import PriorityView from './priority/view';
@@ -105,7 +106,9 @@ export default Mn.View.extend({
     if (!date) {
       return null;
     }
-    return moment(date).format('DD/MM/YYYY hh:mm:ss');
+
+       return moment.tz(date, "Etc/GMT").clone().tz(moment.tz.guess()).format('DD/MM/YYYY HH:mm:ss');
+
   },
 
   formartterOnlyDate(date) {
