@@ -30,7 +30,7 @@ export default Mn.View.extend({
 
   serializeData() {
     var self = this;
-    
+
     const headerItems = Storage.getSubHeaderItems(this.model);
     this.app.updateSubHeader(headerItems);
 
@@ -39,15 +39,25 @@ export default Mn.View.extend({
       value.estimated_date = date;
     });
 
+
+    // let data = this.props.model.attributes.indicators_survey_data.map(value => ({
+    //   clazz: value.value !== null ? value.value.toLowerCase() : 'none ',
+    //   value: value.value,
+    //   name: value.name,
+    //   priority: ""
+    //
+    // }))
+  //  console.log(data);
     return {
       header: {
         date: this.formartterWithTime(this.model.attributes.created_at),
         data: this.model.attributes // ,
       },
       data: this.model.attributes.indicators_survey_data.map(value => ({
-        clazz: value.value !== null ? value.value.toLowerCase() : 'gray',
+        clazz: value.value !== null ? value.value.toLowerCase() : 'none ',
         value: value.value,
-        name: value.name
+        name: value.name,
+
       })),
       priorities: this.props.model.attributes.indicators_priorities,
       clazz:
@@ -113,6 +123,7 @@ export default Mn.View.extend({
 
     var exists = [];
 
+
     exists = this.props.model.attributes.indicators_priorities.filter(
       priority => priority.indicator === indicatorSelected
     );
@@ -145,9 +156,11 @@ export default Mn.View.extend({
     this.priorityDialog.open();
     this.priorityDialog.on('change', data => {
       this.props.model.attributes.indicators_priorities.push(data);
+
       setTimeout(() => {
         this.render();
       }, 300);
+
       this.priorityDialog.close();
     });
   },
@@ -166,9 +179,9 @@ export default Mn.View.extend({
   },
 
   handleShowFamilyMap() {
- 
+
     if(this.model.attributes.indicators_priorities.length<1 && (this.model.attributes.count_red_indicators>0 || this.model.attributes.count_yellow_indicators>0)){
-      
+
       ModalService.request('confirm', {
         title: 'Information',
         text: `You have not set any priorities yet, are sure you want to finish the survey?`
@@ -210,7 +223,7 @@ export default Mn.View.extend({
       });
     } else {
       this.handleShowFamilyMap();
-     
+
     }
   },
 
