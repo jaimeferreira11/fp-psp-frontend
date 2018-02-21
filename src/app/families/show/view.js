@@ -13,6 +13,7 @@ export default Mn.View.extend({
   initialize(options) {
     this.app = options.app;
     this.entity = options.entity;
+
   },
   onRender() {
     const headerItems = storage.getSubHeaderItems(this.model);
