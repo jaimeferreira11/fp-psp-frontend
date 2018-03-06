@@ -2,6 +2,24 @@
   "organization": {
     "search": {
       "title": "Buscar una organización"
+    },
+    "form": {
+      "add-title": "Agregar una Organización",
+      "edit-title": "Editar Organización",
+      "logo-upload": "Click para subir un logo",
+      "name": "Nombre organización",
+      "name-required": "Nombre de organización es requerido",
+      "code": "Código",
+      "code-required": "Código es requerido",
+      "description": "Descripción",
+      "description-required": "Descripción es requerida",
+      "information": "Información",
+      "buttons": {
+        "add": "AGREGAR ORGANIZACION",
+        "cancel": "Cancelar"
+      },
+      "add-success": "Organización creada exitosamente",
+      "add-failed": "La Organización ya existe"
     }
   },
   "general": {
@@ -130,8 +148,22 @@
         "comments": "Comentarios"
       }
     },
+
     "attainment": {
       "title": "Mis logros"
+    },
+
+    "add": {
+      "main-title": "Encuesta",
+      "title-placeholder": "Título de la encuesta",
+      "short-desc-placeholder": "Descripción corta",
+      "assign-survey-placeholder": "Asignar encuesta",
+      "json-schema": "JSON Esquema *",
+      "json-ui-schema": "JSON Esquema Visual *",
+      "buttons": {
+        "save": "GRABAR",
+        "cancel": "Cancelar"
+      }
     }
   },
   "termcondpol": {
@@ -193,24 +225,67 @@
   "hub": {
     "search": {
       "title": "Buscar un Hub"
+    },
+    "form": {
+      "add-title": "Agregar un Hub",
+      "edit-title": "Editar Hub",
+      "logo-upload": "Click para subir un logo",
+      "name": "Nombre hub",
+      "name-required": "Nombre del hub es requerido",
+      "code": "Código",
+      "code-required": "Código es requerido",
+      "description": "Descripción",
+      "description-required": "Descripción es requerida",
+      "information": "Información",
+      "buttons": {
+        "add": "AGREGAR HUB",
+        "cancel": "Cancelar"
+      },
+      "add-success": "Hub creado exitosamente",
+      "add-failed": "El Hub ya existe"
     }
   },
   "user": {
     "search": {
       "title": "Buscar un usuario"
     },
-    "email": "Correo electrónico",
-    "add": {
-      "title": "Agregar un usuario",
-      "user": "Usuario",
-      "username": "Nombre de usuario",
+    "card": {
       "email": "Correo electrónico",
+      "organization": "Organización",
+      "hub": "Hub"
+    },
+    "form": {
+      "add-title": "Agregar un usuario",
+      "edit-title": "Editar usuario",
+      "user-label": "Usuario",
+      "username": "Nombre de usuario",
+      "username-required": "Nombre de usuario es requerido",
+      "email": "Correo electrónico",
+      "email-required": "Correo electrónico es requerido",
+      "email-not-valid": "El correo electrónico no es válido",
       "password": "Contraseña",
-      "confirm-pass": "Confirmar contraseña",
+      "password-required": "Contraseña es requerida",
+      "password-confirm": "Confirmar contraseña",
+      "password-confirm-required": "Confirmación de contraseña es requerida",
+      "password-confirm-failed": "La confirmación de contraseña ha fallado",
+      "select-hub": "Seleccciona el Hub",
+      "select-hub-required": "Hub es requerido",
+      "select-organization": "Selecciona la Organización",
+      "select-organization-required": "Organización es requerida",
+      "select-role": "Selecciona el Rol",
+      "select-role-required": "Rol es requerido",
       "buttons": {
         "add": "AGREGAR USUARIO",
         "cancel": "Cancelar"
-      }
+      },
+      "add-success": "Usuario creado exitosamente",
+      "add-failed": "El usuario ya existe"
+    }
+  },
+  "footer": {
+    "version": {
+      "title": "VERSION WEB",
+      "name": "SEMAFORO DE ELIMINACIÓN DE POBREZA"
     }
   }
 }

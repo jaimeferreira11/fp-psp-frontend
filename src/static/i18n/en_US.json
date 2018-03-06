@@ -2,6 +2,24 @@
   "organization": {
     "search": {
       "title": "Find an organization"
+    },
+    "form": {
+      "add-title": "Add an Organization",
+      "edit-title": "Edit Organization",
+      "logo-upload": "Click to upload a logo",
+      "name": "Organization name",
+      "name-required": "Organization name is required",
+      "code": "Code",
+      "code-required": "Code is required",
+      "description": "Description",
+      "description-required": "Description is required",
+      "information": "Information",
+      "buttons": {
+        "add": "ADD ORGANIZATION",
+        "cancel": "Cancel"
+      },
+      "add-success": "Organization created successfully",
+      "add-failed": "Organization already exist"
     }
   },
   "general": {
@@ -132,6 +150,19 @@
     },
     "attainment": {
       "title": "My Indicators Achieved"
+    },
+
+    "add": {
+      "main-title": "Survey",
+      "title-placeholder": "Surveys´s title",
+      "short-desc-placeholder": "Short description",
+      "assign-survey-placeholder": "Assign survey",
+      "json-schema": "JSON Schema *",
+      "json-ui-schema": "JSON UI Schema *",
+      "buttons": {
+        "save": "SAVE",
+        "cancel": "Cancel"
+      }
     }
   },
   "termcondpol": {
@@ -193,24 +224,67 @@
   "hub": {
     "search": {
       "title": "Find a Hub"
+    },
+    "form": {
+      "add-title": "Add a Hub",
+      "edit-title": "Edit Hub",
+      "logo-upload": "Click to upload a logo",
+      "name": "Hub name",
+      "name-required": "Hub name is required",
+      "code": "Code",
+      "code-required": "Code is required",
+      "description": "Description",
+      "description-required": "Description is required",
+      "information": "Information",
+      "buttons": {
+        "add": "ADD HUB",
+        "cancel": "Cancel"
+      },
+      "add-success": "Hub created successfully",
+      "add-failed": "Hub already exist"
     }
   },
   "user": {
     "search": {
       "title": "Find a user"
     },
-    "email": "Email",
-    "add": {
-      "title": "Add a user",
-      "username": "Username",
-      "user": "User",
+    "card": {
       "email": "Email",
+      "organization": "Organization",
+      "hub": "Hub"
+    },
+    "form": {
+      "add-title": "Add a user",
+      "edit-title": "Edit user",
+      "user-label": "User",
+      "username": "Username",
+      "username-required": "Username is required",
+      "email": "Email",
+      "email-required": "Email is required",
+      "email-not-valid": "The email is not valid",
       "password": "Password",
-      "confirm-pass": "Confirm password",
+      "password-required": "Password is required",
+      "password-confirm": "Confirm password",
+      "password-confirm-required": "Password confirmation is required",
+      "password-confirm-failed": "Password confirmation failed",
+      "select-hub": "Select Hub",
+      "select-hub-required": "Hub is required",
+      "select-organization": "Select Organization",
+      "select-organization-required": "Organization is required",
+      "select-role": "Select Role",
+      "select-role-required": "Role is required",
       "buttons": {
         "add": "ADD USER",
         "cancel": "Cancel"
-      }
+      },
+      "add-success": "User created successfully",
+      "add-failed": "User already exist"
+    }
+  },
+  "footer": {
+    "version": {
+      "title": "WEB VERSION",
+      "name": "POVERTY STOPLIGHT"
     }
   }
 }
