@@ -33,6 +33,7 @@
   <br/>
   <hr/>
   <div class="row indicator-list">
+    <div class="col-lg-12">
     {{#each data}}
     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 indicator-circle-snapshot">
       <div id="circle" class="circle-content {{ this.classNames }} {{this.priority}}" data-toggle="tooltip" title="{{$t 'survey.priority.messages.select'}}" />
@@ -40,6 +41,7 @@
       <p hidden id="indicator-value">{{ this.value }}</p>
     </div>
     {{/each}}
+  </div>
   </div>
 
   <h3 class="{{this.tablePriorityClassNames}}" style="font-weight: bold" >{{$t 'survey.priority.title'}} </h3>
