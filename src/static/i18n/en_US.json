@@ -119,7 +119,7 @@
       "family": "Family",
       "snapshot": "Snapshot",
       "not-share": "I'd prefer not to share my family's situation",
-      "print-header": "Survey Results",
+      "print-header": "Map of life",
       "messages": {
         "not-save": "Your personal information has not been saved in the platform",
         "finish": "Your snapshot was completed successfully. The family's code is \"%{code}\" "
