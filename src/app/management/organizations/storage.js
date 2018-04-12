@@ -9,7 +9,8 @@ var OrganizationsStorage = Storage.extend({
     return {
       mainItem: {
         name: model.get('name'),
-        link: `/#organizations/${model.get('id')}`
+        link: `/#organizations/${model.get('id')}`,
+        logoUrl: model.get('logoUrl') || '/static/images/icon_logo_place.png'
       },
       navigationItems: [
         {
