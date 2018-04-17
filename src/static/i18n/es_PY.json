@@ -26,7 +26,7 @@
     },
     "delete": {
       "confirm-title": "Confirmar Eliminado",
-      "confirm-text": "Está seguro que desea eliminar esta Organización?",
+      "confirm-text": "¿Está seguro que desea eliminar esta Organización?",
       "success": "La Organización ha sido eliminada",
       "failed": "La Organización no pudo ser elimianda"
     }
@@ -184,6 +184,18 @@
         "save": "GRABAR",
         "cancel": "Cancelar"
       }
+    },
+    "save": {
+      "confirm-title": "Guardar Encuesta",
+      "confirm-text": "¿Está seguro que desea guardar estos cambios?",
+      "success": "Encuesta guardada exitosamente"
+    },
+    "form": {
+      "title-required": "Título de la Encuesta es requerido",
+      "schema-required": "El JSON Esquema es requerido",
+      "schema-format-not-valid": "El formato del JSON Esquema no es válido",
+      "schema-ui-required": "El JSON Esquema Visual es requerido",
+      "schema-ui-format-not-valid": "El formato del JSON Esquema Visual no es válido"
     }
   },
   "termcondpol": {
@@ -218,6 +230,7 @@
       "interventions": "Intervenciones",
       "contact": "Contacto",
       "cell": "Celular",
+      "email": "Correo electrónico",
       "place": "Lugar",
       "no-priority": "Ningún indicador fue priorizado en este snapshot"
     },
@@ -275,7 +288,7 @@
     },
     "delete": {
       "confirm-title": "Confirmar Eliminado",
-      "confirm-text": "Está seguro que desea eliminar este Hub?",
+      "confirm-text": "¿Está seguro que desea eliminar este Hub?",
       "success": "El Hub ha sido eliminado",
       "failed": "El Hub no pudo ser elimiando"
     }
