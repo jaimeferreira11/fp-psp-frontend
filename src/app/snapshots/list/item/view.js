@@ -12,9 +12,11 @@ import PriorityModel from './priority/model';
 import SnapshotModel from '../../add/model';
 import ModalService from '../../../modal/service';
 import Storage from './storage';
+import ParameterModel from '../../../parameters/model';
 
 export default Mn.View.extend({
   template: Template,
+  parameterModel: new ParameterModel(),
   events: {
     'click #circle': 'handlerOnClickIndicator',
     'click #delete': 'handleOnDeletePriority',
@@ -27,6 +29,18 @@ export default Mn.View.extend({
     this.model = this.props.model;
     this.app = this.props.app;
     this.model.on('sync', this.render);
+
+
+  },
+
+  onRender(){
+    const self = this;
+    this.parameterModel = new ParameterModel({ id: 1 });
+    this.parameterModel.fetch({
+      success(response) {
+        self.parameterModel = response.toJSON();
+      }
+    });
   },
 
   serializeData() {
@@ -93,6 +107,7 @@ export default Mn.View.extend({
         );
         this.props.model.attributes.indicators_priorities = elements;
         setTimeout(() => {
+            
           this.render();
         }, 300);
       });
@@ -186,7 +201,7 @@ export default Mn.View.extend({
 
   handleShowFamilyMap() {
 
-    if(this.model.attributes.indicators_priorities.length<1 && (this.model.attributes.count_red_indicators>0 || this.model.attributes.count_yellow_indicators>0)){
+    if(this.model.attributes.indicators_priorities.length< this.parameterModel.value && (this.model.attributes.count_red_indicators>0 || this.model.attributes.count_yellow_indicators>0)){
 
       ModalService.request('confirm', {
         title: t('general.messages.information'),
@@ -219,6 +234,7 @@ export default Mn.View.extend({
   finishSurvey(e){
 
     e.preventDefault();
+
 
     if($('#check-privacity').is(':checked')) {
       ModalService.request('confirm', {
