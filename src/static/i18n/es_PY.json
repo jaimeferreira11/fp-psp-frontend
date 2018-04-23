@@ -160,7 +160,8 @@
         "delete-confirm-title": "Confirmación de eliminación",
         "indicator-not-answered": "Durante la encuesta, has elegido no responder la pregunta",
         "select-delete": "Eliminar esta prioridad",
-        "mising-field": "Campo '\"%{field}\"' faltante"
+        "mising-field": "Campo '\"%{field}\"' faltante",
+        "min-priorities": "Seleccione al menos %{min} prioridades"
       },
       "add": {
         "indicator": "Indicador",

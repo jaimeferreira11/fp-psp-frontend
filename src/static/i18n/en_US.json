@@ -160,7 +160,8 @@
         "delete-confirm-title": "Confirm Deletion",
         "indicator-not-answered": "You have chosen not to answer the question",
         "select-delete": "Remove this priority",
-        "mising-field": "Missing '\"%{field}\"' field"
+        "mising-field": "Missing '\"%{field}\"' field",
+        "min-priorities": "Select %{min} priorities"
       },
       "add": {
         "indicator": "Indicator",

@@ -107,7 +107,7 @@ export default Mn.View.extend({
         );
         this.props.model.attributes.indicators_priorities = elements;
         setTimeout(() => {
-            
+
           this.render();
         }, 300);
       });
@@ -200,8 +200,8 @@ export default Mn.View.extend({
   },
 
   handleShowFamilyMap() {
-
-    if(this.model.attributes.indicators_priorities.length< this.parameterModel.value && (this.model.attributes.count_red_indicators>0 || this.model.attributes.count_yellow_indicators>0)){
+    console.log();
+    if(this.model.attributes.indicators_priorities.length <= 0 && (this.model.attributes.count_red_indicators>0 || this.model.attributes.count_yellow_indicators>0)){
 
       ModalService.request('confirm', {
         title: t('general.messages.information'),
@@ -215,6 +215,13 @@ export default Mn.View.extend({
           this.props.model.attributes.snapshot_economic_id
         }`);
       });
+    } else if(this.model.attributes.indicators_priorities.length < this.parameterModel.value){
+       // notificacion
+       return FlashesService.request('add', {
+         timeout: 2000,
+         type: 'warning',
+         title: t('survey.priority.messages.min-priorities', {min: this.parameterModel.value})
+       });
 
     } else {
       this.savedNotification();
